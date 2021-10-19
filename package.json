@@ -3,5 +3,8 @@
     "version": "1.0.0",
     "description": "",
     "license": "ISC",
-    "type": "module"
+    "type": "module",
+    "scripts": {
+        "start": "node ."
+    }
 }
