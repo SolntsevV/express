@@ -5,6 +5,6 @@
     "license": "ISC",
     "type": "module",
     "scripts": {
-        "start": "node ."
+        "start": "node index.js"
     }
 }
