@@ -1,7 +1,7 @@
 import express from 'express';
-const app = express();
-
 import appSrc from './app.js';
+
+const app = appSrc(express, bodyParser, createReadStream, crypto, http);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
