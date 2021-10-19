@@ -6,4 +6,4 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(process.env.PORT || PORT, () => log(process.pid))
+app.listen(PORT)
