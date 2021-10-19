@@ -5,4 +5,4 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(4321)
+app.listen(process.env.PORT || 4321)
