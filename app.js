@@ -6,7 +6,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
   app.all('/login/', (req, res) => {
     res.set({
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS'
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,OPTIONS,DELETE'
     });
     res.send('vitaly_solntsev');
   })
@@ -14,7 +14,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
   app.all('/code/', (req, res) => {
     res.set({
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS'
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,OPTIONS,DELETE'
     });
 
     const readStream = createReadStream(import.meta.url.substring(7));
@@ -27,7 +27,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
   app.all('/sha1/:input/', (req, res) => {
     res.set({
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS'
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,OPTIONS,DELETE'
     });
     
     res.send(crypto.createHmac('sha1', req.params['input']).digest('hex'));
@@ -36,7 +36,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
   app.get('/req/', (req, res) => {
     res.set({
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,OPTIONS,DELETE',
       'Content-type': 'text/html'
     });
     
@@ -80,7 +80,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS'
     });
-    
+
     res.end('vitaly_solntsev')
   })
   
