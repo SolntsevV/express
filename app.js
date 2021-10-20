@@ -58,7 +58,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
 
     res.set({
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS'
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,OPTIONS,DELETE'
     });
 
     let promise = new Promise((resolve, reject) => {
@@ -78,7 +78,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
   app.all('/*/', (req, res) => {
     res.set({
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS'
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,OPTIONS,DELETE'
     });
 
     res.end('vitaly_solntsev')
