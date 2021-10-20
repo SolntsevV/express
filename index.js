@@ -1,7 +1,7 @@
 import express from 'express';
 import appSrc from './app.js';
 import bodyParser from 'body-parser';
-import createReadStream from 'fs';
+import {createReadStream} from 'fs';
 import crypto from 'crypto';
 import http from 'http';
 
