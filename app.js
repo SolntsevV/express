@@ -29,8 +29,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,OPTIONS,DELETE'
     });
-    
-    res.send(crypto.createHmac('sha1', req.params['input']).digest('hex'));
+    res.send(res.send(crypto.createHash('sha1').update(req.params['input']).digest('hex')));
   })
 
   app.get('/req/', (req, res) => {
