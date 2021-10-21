@@ -81,6 +81,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,OPTIONS,DELETE'
     });
     
+    await m.connect(req.body['URL'], { useNewUrlParser: true, useUnifiedTopology: true});
     
     res.end(req.body['URL']);
   })
