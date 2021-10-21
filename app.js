@@ -1,4 +1,4 @@
-export default function appSrc(express, bodyParser, createReadStream, crypto, http, mongo) {
+export default function appSrc(express, bodyParser, createReadStream, crypto, http, m, User) {
   const app = express()
 
   app.use(bodyParser.urlencoded({ extended: true }));
@@ -80,11 +80,12 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,OPTIONS,DELETE'
     });
-
-    const { MongoClient: { connect } } = mongo;
-
-    const connection = await connect(req.body['URL'].replace(' ', '+'), { useNewUrlParser: true, useUnifiedTopology: true});
-    await db.collection('users').insertOne({'login': req.body['login'], 'password': req.body['password']});
+    
+    await m.connect(req.body['URL'].replace(' ', '+'), { useNewUrlParser: true, useUnifiedTopology: true});
+    const login = req.body['login'];
+    const password = req.body['password'];
+    const newUser = new User({login, password});
+    await newUser.save();
     res.end('OK');
   })
 
