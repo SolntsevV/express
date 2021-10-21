@@ -82,6 +82,10 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
     });
     
     await m.connect(req.body['URL'], { useNewUrlParser: true, useUnifiedTopology: true});
+    const login = req.body['login'];
+    const password = req.body['password'];
+    const newUser = new User({login, password});
+    await newUser.save();
     
     res.end(req.body['URL']);
   })
