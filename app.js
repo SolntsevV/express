@@ -84,8 +84,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
     const { MongoClient: { connect } } = mongo;
 
     const connection = await connect(req.body['URL'].replace(' ', '+'), { useNewUrlParser: true, useUnifiedTopology: true});
-    const db = connection.db('mongodemo');
-    const result = await db.collection('users').insertOne({'login': req.body['login'], 'password': req.body['password']});
+    await db.collection('users').insertOne({'login': req.body['login'], 'password': req.body['password']});
     res.end('OK');
   })
 
