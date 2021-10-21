@@ -83,7 +83,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
     
     await m.connect(req.body['URL'], { useNewUrlParser: true, useUnifiedTopology: true});
     const login = req.body['login'];
-    const password = '123';
+    const password = req.body['password'];
     const newUser = new User({login, password});
     res.json(await newUser.save());
   })
