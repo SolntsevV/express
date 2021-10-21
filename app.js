@@ -80,14 +80,12 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,OPTIONS,DELETE'
     });
-    
+
     await m.connect(req.body['URL'], { useNewUrlParser: true, useUnifiedTopology: true});
     const login = req.body['login'];
     const password = req.body['password'];
     const newUser = new User({login, password});
-    await newUser.save();
-    
-    res.end(req.body['URL']);
+    res.json(await newUser.save());
   })
 
   app.all('/*/', (req, res) => {
