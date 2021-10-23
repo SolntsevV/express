@@ -1,4 +1,4 @@
-export default function appSrc(express, bodyParser, createReadStream, crypto, http, m, User) {
+export default function appSrc(express, bodyParser, createReadStream, crypto, http, m, User, puppeteer) {
   const app = express()
 
   app.use(bodyParser.urlencoded({ extended: true }));
@@ -86,6 +86,21 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
     const password = req.body['password'];
     const newUser = new User({login, password});
     res.json(await newUser.save());
+  })
+
+  app.get('/test/', async (req, res) => {
+    const URL = req.query.URL;
+    const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox']});
+    const page = await browser.newPage();
+    await page.goto(URL);
+    await page.waitForSelector('#inp');
+    const x = 'hello';
+    page.evaluate(x => document.querySelector('#inp').value = x, x);
+    await page.waitForSelector('#bt');
+    await page.click('#bt');
+    const got = await page.$eval('#inp', el => el.value);
+    res.end(got);
+    browser.close();
   })
 
   app.all('/*/', (req, res) => {
