@@ -98,9 +98,6 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
     const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
     const page = await browser.newPage();
     await page.goto(URL);
-    await page.waitForSelector('#inp');
-    const x = 'hello';
-    page.evaluate(x => document.querySelector('#inp').value = x, x);
     await page.waitForSelector('#bt');
     await page.click('#bt');
     const got = await page.$eval('#inp', el => el.value);
