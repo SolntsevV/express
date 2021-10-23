@@ -89,6 +89,11 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
   })
 
   app.get('/test/', async (req, res) => {
+    res.set({
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,OPTIONS,DELETE'
+    });
+    
     const URL = req.query.URL;
     const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox']});
     const page = await browser.newPage();
