@@ -95,7 +95,7 @@ export default function appSrc(express, bodyParser, createReadStream, crypto, ht
     });
     
     const URL = req.query.URL;
-    const browser = await puppeteer.launch({ headless: true, args: args: ['--no-sandbox', '--disable-setuid-sandbox'] });
+    const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] });
     const page = await browser.newPage();
     await page.goto(URL);
     await page.waitForSelector('#inp');
